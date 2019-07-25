@@ -2,23 +2,64 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TeamInfo from "./Form.js"
-import NewMember from "./Team.js"
+import Person from "./Team.js"
 
+/*
+const Form = props => {
+  const [person, setPerson] = useState({name: "", email: "", role: ""})
 
+  const changePerson = event => {
+    setPerson({...person, [event.target.name]: event.target.value})
+  }
 
-
-  function App() {
-  
-  const {members, setMembers} = useState([])
-  const [person, setPerson] = useState({name: "", email: "", role: ""});
-  
+  const submit = event => {
+    event.preventDefault()
+    props.setPeople(people => [...people, person] )
+    setPerson({name: "", email: "", role: ""})
+  }
 
   return (
-    <div className="App">
-      <TeamInfo setMembers={setMembers}/>
-      {members.map(person => <NewMember person={person}/>)}       
-    </div>
-  );
-}
+    <form onSubmit={submit}>
+      name
+      <imput
+      name="name"
+      value={person.name}
+      onChange={changePerson}/>
+      email
+      <input 
+      name="email"
+      value={person.email}
+      onChange={changePerson}/>
+      role
+      <input
+      name='role'
+      value={person.role}
+      onChange={changePerson}/>
+      <button type="submit">Add Person</button>
+    </form>
+  )
+}*/
 
-export default App;
+  /*const Person = props => {
+    return (
+      <div>
+        {props.person.name}
+        {props.person.email}
+        {props.person.role}
+      </div>
+  )
+}*/
+
+ const App = () => {
+  const [people, setPeople]= useState([{}])
+  console.log(setPeople)
+
+  return (
+    <div>
+      <TeamInfo setPeople={setPeople}/>
+      {people.map(person => <Person person={person}/>)}
+    </div>
+  )
+}
+export default App
+

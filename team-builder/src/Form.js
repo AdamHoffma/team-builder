@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
-import NewMember from "./Team.js"
+import Person from "./Team.js"
 
 
-export default function TeamInfo() {   
-    const [user, setUser] = useState({name: "", email: "", role: ""})
-    const [person, setPerson] = useState([NewMember])
+export default function TeamInfo(props) {   
+    
+
+    const [person, setPerson] = useState({name: "", email: "", role: ""})
+    
     function changePerson(event) {
         event.preventDefault()
-        setUser({...user, [event.target.name]: event.target.value})
+        setPerson({...person, [event.target.name]: event.target.value})
     }
 
     const Submit = event => {
         event.preventDefault()
+        props.setPeople(people => [...people, person])
         setPerson({...person, [event.target.name]: event.target.value})
         
     }
@@ -19,15 +22,15 @@ export default function TeamInfo() {
         <form  onSubmit={Submit}>
             <label>
                 Name:
-                <input type="text" name="name" value={user.name} onChange={changePerson}/>
+                <input type="text" name="name" value={person.name} onChange={changePerson}/>
             </label>
             <label>
                 Email:
-                <input type="text" name="email" value={user.email} onChange={changePerson}/>
+                <input type="text" name="email" value={person.email} onChange={changePerson}/>
             </label>
             <label>
                 Role:
-                <input type="text" name="role" value={user.role} onChange={changePerson}/>
+                <input type="text" name="role" value={person.role} onChange={changePerson}/>
             </label>
             <button type='submit'>Add Person</button>
         </form>

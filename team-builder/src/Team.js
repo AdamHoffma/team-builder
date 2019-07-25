@@ -2,13 +2,14 @@ import React, {useState} from "react"
 import TeamInfo from "./Form.js"
 
 
-export default function NewMember(props) {
-    
+ const Person = props => {
     return (
-        <div>
-    {props.person.name}
-    {props.person.email}
-    {props.person.role}
-    </div>
-    )
+      <div>
+        {props.person.name}
+        {props.person.email}
+        {props.person.role}
+      </div>
+  )
 }
+
+export default Person
